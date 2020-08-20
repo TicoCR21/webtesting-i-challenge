@@ -93,4 +93,23 @@ describe( "Testing Enhancement Functions", () =>
       expect( fail( new Item( "sword", 20, 20 ) ) ).toEqual( new Item( "sword", 10, 19 ) );
     } );
   } );
+
+  describe( "get", () => 
+  {
+    it( "enhancement equal to 0", () =>
+    {
+      expect( get( new Item( "sword", 1, 0 ) ) ).toEqual( new Item( "sword", 1, 0 ) );
+      expect( get( new Item( "spear", 10, 0 ) ) ).toEqual( new Item( "spear", 10, 0 ) );
+      expect( get( new Item( "shield", 15, 0 ) ) ).toEqual( new Item( "shield", 15, 0 ) );
+      expect( get( new Item( "arrow", 20, 0 ) ) ).toEqual( new Item( "arrow", 20, 0 ) );
+    } );
+
+    it( "enhancement greater than 0", () =>
+    {
+      expect( get( new Item( "sword", 1, 1 ) ) ).toEqual( new Item( "[+1] sword", 1, 1 ) );
+      expect( get( new Item( "spear", 10, 5 ) ) ).toEqual( new Item( "[+5] spear", 10, 5 ) );
+      expect( get( new Item( "shield", 15, 10 ) ) ).toEqual( new Item( "[+10] shield", 15, 10 ) );
+      expect( get( new Item( "arrow", 20, 20 ) ) ).toEqual( new Item( "[+20] arrow", 20, 20 ) );
+    } );
+  } );
 } );
